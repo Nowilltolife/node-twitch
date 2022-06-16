@@ -98,6 +98,12 @@ describe("unit tests for endpoint NOT requiring user authentication.", () => {
 		expect(result.data).toBeInstanceOf(Array);
 	});
 
+	test("`getChannelStreamScheudle` should return array of scheudle segments", async () => {
+		const result = await api.getChannelStreamSchedule({ broadcaster_id: broadcasterId });
+
+		expect(result.data).toBeInstanceOf(Array);
+	});
+
 	test("`getCodeStatus` should do something", async () => {
 		const result = await api.getCodeStatus({ code: "asdasd", user_id: broadcasterId });
 

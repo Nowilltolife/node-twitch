@@ -34,7 +34,7 @@ import {
 	ModifyChannelInformationOptions,
 	UpdateUserOptions,
 	CreateClipOptions,
-	GetModeratorsOptions, GetCodeStatusOptions, ReplaceStreamTagsOptions, StartCommercialOptions
+	GetModeratorsOptions, GetCodeStatusOptions, ReplaceStreamTagsOptions, StartCommercialOptions, GetChannelStreamScheudleOptions
 } from "./types/options";
 import {
 	APIBitsLeaderboardResponse,
@@ -56,7 +56,7 @@ import {
 	APIExtensionResponse,
 	APIActiveUserExtensionResponse,
 	APICreateClipResponse,
-	APIModeratorResponse, APICodeStatusResponse, APICommercialResponse, APIChannelEmotesResponse
+	APIModeratorResponse, APICodeStatusResponse, APICommercialResponse, APIChannelEmotesResponse, APIChannelStreamScheudleResponse
 } from "./types/responses";
 
 /** Twitch API */
@@ -524,6 +524,13 @@ export default class TwitchApi extends EventEmitter{
 		const endpoint = `/chat/emotes${query}`;
 
 		return this._get(endpoint);
+	}
+
+	async getChannelStreamSchedule(options: GetChannelStreamScheudleOptions): Promise<APIChannelStreamScheudleResponse>{
+		const query = "?" + parseOptions(options);
+		const endpoint = `/schedule${query}`;
+
+		return this._get<APIChannelStreamScheudleResponse>(endpoint);
 	}
 
 	/*********************************

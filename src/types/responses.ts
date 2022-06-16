@@ -21,7 +21,7 @@ import {
 	Extension,
 	ActiveExtension,
 	CreatedClip,
-	Moderator, CodeStatus, Commercial
+	Moderator, CodeStatus, Commercial, Schedule
 } from "./objects";
 
 export interface APIBaseResponse{
@@ -137,4 +137,8 @@ export interface APIBitsLeaderboardResponse{
 
 export interface APICommercialResponse{
 	data: Commercial[];
+}
+
+export interface APIChannelStreamScheudleResponse extends APIBaseResponse{
+	data: Schedule;
 }

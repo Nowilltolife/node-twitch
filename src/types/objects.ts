@@ -630,4 +630,44 @@ export interface Commercial{
 	retry_after: number;
 }
 
+export interface ScheduleSegment extends DateRange{
+	/** The ID of the schedule segment. */
+	id: string;
+
+	/** The title of the scheudle  */
+	title: string;
+
+	/** Used with recurring scheduled broadcasts. Specifies the date of the next recurring broadcast in RFC3339 format if one or more specific broadcasts have been deleted in the series. Set to null otherwise. */
+	canceled_until: string;
+
+	/** The category for the scheduled broadcast. Set to null if no category has been specified. */
+	category: {
+		/** Game/category ID. */
+		id: string,
+
+		/** Game/category name. */
+		name: string
+	}
+
+	/** Indicates if the scheduled broadcast is recurring weekly. */
+	is_recurring: boolean;
+}
+
+export interface Schedule extends DateRange{
+	/** Scheduled broadcasts for this stream schedule. */
+	segments: ScheduleSegment[];
+
+	/** User ID of the broadcaster. */
+	broadcaster_id: string;
+
+	/** Display name of the broadcaster. */
+	broadcaster_name: string;
+
+	/** Login of the broadcaster */
+	broadcaster_login: string;
+
+	/** If Vacation Mode is enabled, this includes start and end dates for the vacation. If Vacation Mode is disabled, value is set to null. */
+	vacation: DateRange;
+}
+
 export type CommercialLength = 30 | 60 | 90 | 120 | 150 | 180;
